@@ -10,18 +10,20 @@ public class Trie {
         next = new Trie[27];
         word = false;
     }
+
+    /**
+     * Finds all Nodes above this node with a word boolean to true.
+     * @return an ArrayList of all possible words.
+     */
     public ArrayList<String> findAllWords(){
         ArrayList<String> allWords = new ArrayList<>();
-
-        if(this.word){
+        if(this.word)
             allWords.add(this.currentWord);
-        }
         for (Trie node : next) {
             if (node != null) {
                 allWords.addAll(node.findAllWords());
             }
         }
-
         return allWords;
     }
     public Trie findNode(String s){
